@@ -6,7 +6,7 @@
     "projectType": "application",
     "sourceRoot": "apps/backoffice-e2e/src",
     "implicitDependencies": [
-      "@my-org/backoffice"
+      "backoffice"
     ]
   }
 }
