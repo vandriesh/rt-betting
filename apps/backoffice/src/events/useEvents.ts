@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/react-query';
-import type { Event } from '../../types';
+import type { Event } from '@my-org/common';
 
 const fetchEvents = async (): Promise<Event[]> => {
   console.log('🔄 [BO] Fetching events...');

@@ -1,13 +1,13 @@
 import React from 'react';
 import { useEventsStore } from './useEventsStore';
-import { enhancedSocket } from '../../socket';
-import { WsMessageType, type SelectionPriceChangePayload } from '../../types';
+import { enhancedSocket } from '@my-org/common';
+import { WsMessageType, type SelectionPriceChangePayload } from '@my-org/common';
 
-export const usePriceUpdate = (eventId: string) => {
+export const usePriceUpdate = (eventId: number) => {
   const { updateSelectionPrice } = useEventsStore();
-  const [updating, setUpdating] = React.useState<string | null>(null);
+  const [updating, setUpdating] = React.useState<number | null>(null);
   const [updateDirection, setUpdateDirection] = React.useState<'up' | 'down' | null>(null);
-  const pendingUpdateRef = React.useRef<{ marketId: number; selectionId: string; price: number; direction: 'up' | 'down' } | null>(null);
+  const pendingUpdateRef = React.useRef<{ marketId: number; selectionId: number; price: number; direction: 'up' | 'down' } | null>(null);
   const debounceTimeoutRef = React.useRef<NodeJS.Timeout | null>(null);
 
   React.useEffect(() => {
@@ -20,7 +20,7 @@ export const usePriceUpdate = (eventId: string) => {
         const cleanup = enhancedSocket.subscribeToMarket(market.id, (message) => {
           if (message.type === WsMessageType.SelectionPriceChange) {
             const payload = message.payload as SelectionPriceChangePayload;
-            if (pendingUpdateRef.current?.selectionId === String(payload.selectionId)) {
+            if (pendingUpdateRef.current?.selectionId === payload.selectionId) {
               // Clear updating state when we receive confirmation
               setUpdating(null);
               setUpdateDirection(null);

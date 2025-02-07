@@ -1,12 +1,12 @@
 import { create } from 'zustand';
 import { devtools } from 'zustand/middleware';
-import { createEventsSlice, type EventsSlice } from '../../common/store/createEventsSlice';
-import { enhancedSocket } from '../../socket';
-import { WsMessageType } from '../../types';
+import { createEventsSlice, type EventsSlice } from '@my-org/common';
+import { enhancedSocket } from '@my-org/common';
+import { WsMessageType } from '@my-org/common';
 
 interface BOEventsState extends EventsSlice {
   updating: string | null;
-  updateSelectionPrice: (eventId: number, marketId: number, selectionId: string, newPrice: number) => void;
+  updateSelectionPrice: (eventId: number, marketId: number, selectionId: number, newPrice: number) => void;
   setUpdating: (id: string | null) => void;
   setSuspended: (eventId: number, suspended: boolean) => void;
 }
@@ -68,7 +68,7 @@ export const useEventsStore = create<BOEventsState>()(
           type: WsMessageType.EventStatusUpdate,
           payload: {
             id: eventId,
-            suspended
+            suspended,
           }
         });
       }

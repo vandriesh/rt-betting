@@ -1,9 +1,8 @@
-import React from 'react';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { EventList } from './events/EventList';
-import { WSLogger } from '../common/components/WSLogger';
+import { WSLogger } from '@my-org/common';
 import { BackOfficeConnection } from './components/BackOfficeConnection';
-import '../index.css';
+import './index.css';
 
 const queryClient = new QueryClient();
 

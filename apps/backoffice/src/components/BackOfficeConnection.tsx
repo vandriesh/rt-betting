@@ -1,5 +1,4 @@
-import React from 'react';
-import { ConnectionStatus } from '../../common/components/ConnectionStatus';
+import { ConnectionStatus } from '@my-org/common';
 import { useBackOfficeConnection } from '../hooks/useBackOfficeConnection';
 
 export const BackOfficeConnection = () => {

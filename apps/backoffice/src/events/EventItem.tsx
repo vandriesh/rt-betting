@@ -1,6 +1,6 @@
 import React from 'react';
 import { RefreshCw, Lock, Unlock, Clock } from 'lucide-react';
-import type { Event } from '../../types';
+import type { Event } from '@my-org/common';
 import { useEventsStore } from './useEventsStore';
 import { usePriceUpdate } from './usePriceUpdate';
 

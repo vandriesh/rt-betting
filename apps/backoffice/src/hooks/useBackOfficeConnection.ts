@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { socket, enhancedSocket } from '../../socket';
+import { socket, enhancedSocket } from '@my-org/common';
 
 export const useBackOfficeConnection = () => {
   const [isConnected, setIsConnected] = useState(socket.connected);
