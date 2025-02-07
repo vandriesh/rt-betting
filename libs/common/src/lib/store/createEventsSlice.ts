@@ -1,4 +1,4 @@
-import type { Event } from '@my-org/common';
+import type { Event } from '../types';
 import type { StateCreator } from 'zustand';
 
 export interface EventsSlice {

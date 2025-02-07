@@ -11,9 +11,9 @@ const lastSeenRevisions = new Map<string, number>();
 // Helper to log messages to the appropriate logger
 const logMessage = (source: 'bo' | 'sb', direction: 'in' | 'out', event: string, data: any) => {
   const key = `ws-logger-${source === 'bo' ? 'back-office' : 'sportsbook'}`;
-  // @ts-ignore
+  // @ts-expect-error TODO add description
   if ((window as any)[key]?.addMessage) {
-    // @ts-ignore
+    // @ts-expect-error TODO add description
     (window as any)[key].addMessage(direction, event, data);
   }
 };
@@ -50,7 +50,9 @@ export const enhancedSocket = {
     
     if (!channel.match(/^\*:Market:\d+$/)) {
       console.error('Invalid market channel format:', channel);
-      return () => {};
+      return () => {
+        //
+      };
     }
     
     logMessage('sb', 'out', 'subscribe', { channel });
@@ -94,7 +96,9 @@ export const enhancedSocket = {
     
     if (!channel.match(/^\*:Event:\d+$/)) {
       console.error('Invalid event channel format:', channel);
-      return () => {};
+      return () => {
+        //
+      };
     }
     
     logMessage('sb', 'out', 'subscribe', { channel });

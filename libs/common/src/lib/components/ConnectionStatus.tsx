@@ -1,6 +1,5 @@
 import React from 'react';
 import { Wifi, WifiOff, Power } from 'lucide-react';
-import type { ConnectionStatusData } from '@my-org/common';
 
 interface ConnectionStatusProps {
   isConnected: boolean;

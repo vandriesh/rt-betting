@@ -1,8 +1,8 @@
 import { create } from 'zustand';
-import { enhancedSocket } from '@my-org/common';
-import type { SubscriptionSource, WebSocketMessage, EventUpdatePayload, SelectionPriceChangePayload } from '../../types';
-import { WsMessageType } from '@my-org/common';
-import { useSportsBookStore } from '@my-org/common';
+import { enhancedSocket } from '../socket/socket';
+import type { SubscriptionSource, WebSocketMessage, EventUpdatePayload, SelectionPriceChangePayload } from '../types';
+import { WsMessageType } from '../types';
+import { useSportsBookStore } from '../events/useEventsStore';
 
 interface SubscriptionState {
   // Track sources per channel
