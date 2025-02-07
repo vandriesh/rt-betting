@@ -1,0 +1,10 @@
+{
+  "name": "sportsbook-e2e",
+  "version": "0.0.1",
+  "private": true,
+  "nx": {
+    "projectType": "application",
+    "sourceRoot": "apps/sportsbook-e2e/src",
+    "implicitDependencies": ["@my-org/sportsbook"]
+  }
+}

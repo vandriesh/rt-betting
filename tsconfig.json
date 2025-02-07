@@ -11,6 +11,12 @@
     },
     {
       "path": "./libs/common"
+    },
+    {
+      "path": "./apps/sportsbook-e2e"
+    },
+    {
+      "path": "./apps/sportsbook"
     }
   ]
 }
