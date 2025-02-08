@@ -17,6 +17,12 @@
     },
     {
       "path": "./apps/sportsbook"
+    },
+    {
+      "path": "./apps/server-e2e"
+    },
+    {
+      "path": "./apps/server"
     }
   ]
 }
