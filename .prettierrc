@@ -1,6 +1,6 @@
 {
     bracketSameLine: false,
-    jsxSingleQuote: true,
+    jsxSingleQuote: false,
     parser: 'typescript',
     printWidth: 120,
     quoteProps: 'as-needed',
@@ -25,14 +25,10 @@
             },
         },
         {
-          "overrides": [
-            {
-              "files": ".*rc",
-              "options": {
-                "parser": "json"
-              }
-            }
-          ]
+          "files": ".*rc",
+          "options": {
+            "parser": "json"
+          }
         }
-    ],
+    ]
 }
