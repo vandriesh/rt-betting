@@ -54,6 +54,7 @@ export const useSubscriptionManager = () => {
             activeSocketSubscriptions.add(channel);
 
             enhancedSocket.subscribeToMarket(marketId, (message) => {
+                console.log(    'DEBUG', marketId, message);
                 if (message.type === 'SelectionPriceChange') {
                     const event = store.events.find((e) => e.markets.some((m) => m.id === message.payload.marketId));
                     if (event) {

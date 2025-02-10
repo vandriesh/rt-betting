@@ -6,8 +6,12 @@ export const mockSocket = {
     on: vi.fn(),
     emit: vi.fn()
   },
-  subscribeToEvent: vi.fn(() => () => {}),
-  subscribeToMarket: vi.fn(() => () => {}),
+  subscribeToEvent: vi.fn(() => () => {
+    //
+  }),
+  subscribeToMarket: vi.fn(() => () => {
+    //
+  }),
   getActiveSubscriptions: vi.fn(() => []),
   cleanupAllSubscriptions: vi.fn()
 };

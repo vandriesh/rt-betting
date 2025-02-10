@@ -1,4 +1,5 @@
-import { ConnectionStatus } from '@my-org/common';
+import { ConnectionStatus } from '@my-org/feature-ws-logger';
+
 import { WSMonitor } from '../WSMonitor';
 import { useSportsbookConnection } from '../hooks/useSportsbookConnection';
 import { useSportsBookStore } from '../events/useEventsStore';

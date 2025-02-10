@@ -6,6 +6,9 @@
       "path": "../../libs/common"
     },
     {
+      "path": "../../libs/feature-ws-logger"
+    },
+    {
       "path": "./tsconfig.app.json"
     },
     {

@@ -1,4 +1,4 @@
-import { ConnectionStatus } from '@my-org/common';
+import { ConnectionStatus } from '@my-org/feature-ws-logger';
 import { useBackOfficeConnection } from '../hooks/useBackOfficeConnection';
 
 export const BackOfficeConnection = () => {

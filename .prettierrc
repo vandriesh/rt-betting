@@ -24,5 +24,15 @@
                 parser: 'markdown',
             },
         },
+        {
+          "overrides": [
+            {
+              "files": ".*rc",
+              "options": {
+                "parser": "json"
+              }
+            }
+          ]
+        }
     ],
 }

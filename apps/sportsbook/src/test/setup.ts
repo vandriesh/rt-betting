@@ -11,19 +11,3 @@ vi.mock('socket.io-client', () => ({
     disconnect: vi.fn()
   }))
 }));
-
-// Mock console methods to reduce noise in tests
-console.log = vi.fn();
-console.error = vi.fn();
-console.warn = vi.fn();
-
-// Add custom matchers
-declare global {
-  namespace Vi {
-    interface JestMatchers<T> {
-      toBeInTheDocument(): boolean;
-      toHaveClass(className: string): boolean;
-      toHaveTextContent(text: string): boolean;
-    }
-  }
-}

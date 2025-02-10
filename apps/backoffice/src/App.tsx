@@ -1,6 +1,8 @@
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+
+import { WSLogger } from '@my-org/feature-ws-logger';
+
 import { EventList } from './events/EventList';
-import { WSLogger } from '@my-org/common';
 import { BackOfficeConnection } from './components/BackOfficeConnection';
 import './index.css';
 

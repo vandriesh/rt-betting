@@ -71,7 +71,7 @@ export const enhancedSocket = {
         }
 
         // Update last seen revision
-        lastSeenRevisions.set(channel, data.revision);
+        lastSeenRevisions.set(channel, data?.revision ?? 0);
 
         logMessage('sb', 'in', channel, data);
         callback(data);
@@ -117,7 +117,7 @@ export const enhancedSocket = {
         }
 
         // Update last seen revision
-        lastSeenRevisions.set(channel, data.revision);
+        lastSeenRevisions.set(channel, data?.revision ?? 0);
 
         logMessage('sb', 'in', channel, data);
         callback(data);

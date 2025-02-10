@@ -23,6 +23,9 @@
     },
     {
       "path": "./apps/server"
+    },
+    {
+      "path": "./libs/feature-ws-logger"
     }
   ]
 }

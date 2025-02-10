@@ -1,7 +1,7 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
-import { WSLogger } from '@my-org/common';
+import { WSLogger } from '@my-org/feature-ws-logger';
 
 import { EventList } from './events/EventList';
 import { EventDetails } from './events/EventDetails';

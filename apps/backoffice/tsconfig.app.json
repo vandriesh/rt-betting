@@ -38,6 +38,9 @@
   "references": [
     {
       "path": "../../libs/common/tsconfig.lib.json"
+    },
+    {
+      "path": "../../libs/feature-ws-logger/tsconfig.lib.json"
     }
   ]
 }

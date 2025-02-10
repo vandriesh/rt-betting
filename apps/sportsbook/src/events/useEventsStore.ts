@@ -5,8 +5,8 @@ import type { EventUpdatePayload, SelectionPriceChangePayload } from '@my-org/co
 import { createEventsSlice, type EventsSlice } from '@my-org/common';
 
 interface BetslipBet {
-    eventId: string;
-    selectionId: string;
+    eventId: number;
+    selectionId: number;
     stake?: number;
 }
 
@@ -19,13 +19,13 @@ interface SportsBookState extends EventsSlice {
     clearPriceChange: (id: string) => void;
 
     bets: BetslipBet[];
-    addBet: (eventId: string, selectionId: string) => void;
-    removeBet: (selectionId: string) => void;
-    removeBetsByEventId: (eventId: string) => void;
-    updateStake: (selectionId: string, stake: number) => void;
+    addBet: (eventId: number, selectionId: number) => void;
+    removeBet: (selectionId: number) => void;
+    removeBetsByEventId: (eventId: number) => void;
+    updateStake: (selectionId: number, stake: number) => void;
     clearBetslip: () => void;
 
-    handlePriceChange: (eventId: string, payload: SelectionPriceChangePayload) => void;
+    handlePriceChange: (eventId: number, payload: SelectionPriceChangePayload) => void;
     handleEventUpdate: (payload: EventUpdatePayload) => void;
 }
 

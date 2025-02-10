@@ -1,5 +1,4 @@
-export * from './lib/components/WSLogger';
-export * from './lib/components/ConnectionStatus';
+
 export * from './lib/socket/protocol';
 export * from './lib/socket/socket';
 export * from './lib/types';

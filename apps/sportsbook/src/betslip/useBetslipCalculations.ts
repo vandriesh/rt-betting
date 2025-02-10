@@ -2,7 +2,7 @@ import { useMemo } from 'react';
 import type { Event, Selection } from '../../types';
 
 interface BetslipBet {
-  eventId: string;
+  eventId: number;
   selectionId: string;
   stake?: number;
 }

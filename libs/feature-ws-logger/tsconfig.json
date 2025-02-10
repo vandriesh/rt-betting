@@ -3,13 +3,7 @@
   "include": [],
   "references": [
     {
-      "path": "../../libs/common"
-    },
-    {
-      "path": "../../libs/feature-ws-logger"
-    },
-    {
-      "path": "./tsconfig.app.json"
+      "path": "./tsconfig.lib.json"
     },
     {
       "path": "./tsconfig.spec.json"
