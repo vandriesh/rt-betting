@@ -16,24 +16,54 @@ const baseURL = process.env['BASE_URL'] || 'http://localhost:4300';
  */
 export default defineConfig({
   ...nxE2EPreset(__filename, { testDir: './src' }),
+  workers: 1,
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
     baseURL,
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'on-first-retry',
   },
-  /* Run your local dev server before starting the tests */
-  webServer: {
+/*
+  /!* Run your local dev server before starting the tests *!/
+  __webServer: {
     command: 'npx nx run @my-org/backoffice:preview',
-    url: 'http://localhost:4300',
+    url: 'http://localhost:4200',
     reuseExistingServer: !process.env.CI,
     cwd: workspaceRoot,
   },
+*/
+  webServer: [
+    {
+      command: 'npx nx serve server',
+      url: 'http://localhost:3001/api/events',
+      //reuseExistingServer: !process.env.CI,
+      reuseExistingServer: true,
+      timeout: 5000,
+      cwd: workspaceRoot,
+    },
+    {
+      command: 'npx nx dev sportsbook',
+      url: 'http://localhost:4200',
+      reuseExistingServer: true,
+      timeout: 5000,
+      cwd: workspaceRoot,
+    },
+    {
+      command: 'npx nx dev backoffice',
+      url: 'http://localhost:4201',
+      reuseExistingServer: true,
+      timeout: 5000,
+      cwd: workspaceRoot,
+    },
+  ],
   projects: [
     {
       name: 'chromium',
       use: { ...devices['Desktop Chrome'] },
     },
+
+    // Uncomment for mobile browsers support
+    /*
 
     {
       name: 'firefox',
@@ -45,8 +75,8 @@ export default defineConfig({
       use: { ...devices['Desktop Safari'] },
     },
 
-    // Uncomment for mobile browsers support
-    /* {
+    {
+
       name: 'Mobile Chrome',
       use: { ...devices['Pixel 5'] },
     },
