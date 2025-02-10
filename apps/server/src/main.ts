@@ -4,15 +4,14 @@ import { Server } from 'socket.io';
 import cors from 'cors';
 
 import type { EventUpdatePayload, SelectionPriceChangePayload, WebSocketMessage } from '@my-org/common';
-import { getEvents } from './api/events';
+import { getEvents, resetEvents } from './api/events';
 
 // import { WsMessageType } from '@my-org/common';
-
 
 enum WsMessageType {
     SelectionPriceChange = 'SelectionPriceChange',
     EventStatusUpdate = 'EventStatusUpdate',
-    ScoreUpdate = 'ScoreUpdate'
+    ScoreUpdate = 'ScoreUpdate',
 }
 
 const app = express();
@@ -49,7 +48,21 @@ const incrementRevision = () => {
 };
 
 // API Routes
+// Move these declarations to the top level so they can be reset
+
+// Add this function to reset WebSocket state
+const resetWebSocketState = () => {
+    missedUpdates.clear();
+    currentRevision = 3;
+    io.emit('reset'); // Notify all clients
+};
+
 app.get('/api/events', getEvents);
+// Modify the reset endpoint to reset both events and WebSocket state
+app.post('/api/reset', (req, res) => {
+    resetEvents(req, res);
+    resetWebSocketState();
+});
 
 io.on('connection', (socket) => {
     console.log('⚡️ WebSocket connected:', socket.id);
@@ -79,7 +92,6 @@ io.on('connection', (socket) => {
                 console.log('⚡️ WebSocket error: Invalid market channel format:', channel);
                 return;
             }
-
 
             if (message.type === WsMessageType.SelectionPriceChange) {
                 // Add revision to message
