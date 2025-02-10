@@ -1,8 +1,8 @@
 import { useEffect } from 'react';
-import { enhancedSocket } from '../../socket';
-import { useSportsBookStore } from '../events/useEventsStore';
-import type { Event, SubscriptionSource } from '../../types';
-import { WsMessageType } from '../../types';
+import { enhancedSocket } from '@my-org/common';
+import { useSportsBookStore } from '@my-org/common';
+import type { Event, SubscriptionSource } from '@my-org/common';
+import { WsMessageType } from '@my-org/common';
 
 export const useEventSubscription = (event: Event | undefined, source: SubscriptionSource) => {
   const store = useSportsBookStore.getState();

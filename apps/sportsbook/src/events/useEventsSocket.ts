@@ -1,6 +1,4 @@
-import { enhancedSocket, WsMessageType } from '@my-org/common';
-
-import { useSportsBookStore } from './useEventsStore';
+import { enhancedSocket, useSportsBookStore, WsMessageType } from '@my-org/common';
 
 let marketSubscriptions: (() => void)[] = [];
 let eventSubscriptions: (() => void)[] = [];
@@ -21,11 +19,7 @@ export const setupSocketSubscriptions = () => {
             console.log(`🎮 [SB] Received update for market ${marketId}:`, message);
 
             if (message.type === WsMessageType.SelectionPriceChange) {
-                // Find the event that contains this market
-                const event = events.find((e) => e.markets.some((m) => m.id === message.payload.marketId));
-                if (event) {
-                    handlePriceChange(event.id, message.payload);
-                }
+                handlePriceChange(message.payload.eventId, message.payload);
             }
         });
         marketSubscriptions.push(unsubscribe);

@@ -39,70 +39,94 @@ export const useSportsBookStore = create<SportsBookState>()(
 
                 priceChanges: {},
                 setPriceChange: (id, direction) =>
-                    set(state => ({ priceChanges: { ...state.priceChanges, [id]: direction } }), false, 'sportsbook/setPriceChange'),
+                    set(
+                        (state) => ({ priceChanges: { ...state.priceChanges, [id]: direction } }),
+                        false,
+                        'sportsbook/setPriceChange',
+                    ),
                 clearPriceChange: (id) =>
-                    set(state => {
-                        const { [id]: _, ...rest } = state.priceChanges;
-                        return { priceChanges: rest };
-                    }, false, 'sportsbook/clearPriceChange'),
+                    set(
+                        (state) => {
+                            const { [id]: _, ...rest } = state.priceChanges;
+                            return { priceChanges: rest };
+                        },
+                        false,
+                        'sportsbook/clearPriceChange',
+                    ),
 
                 bets: [],
                 addBet: (eventId, selectionId) =>
-                    set(state => ({
-                        bets: state.bets.some(bet => bet.selectionId === selectionId)
-                            ? state.bets
-                            : [...state.bets, { eventId, selectionId }]
-                    }), false, 'sportsbook/addBet'),
+                    set(
+                        (state) => ({
+                            bets: state.bets.some((bet) => bet.selectionId === selectionId)
+                                ? state.bets
+                                : [...state.bets, { eventId, selectionId }],
+                        }),
+                        false,
+                        'sportsbook/addBet',
+                    ),
                 removeBet: (selectionId) =>
-                    set(state => ({
-                        bets: state.bets.filter(bet => bet.selectionId !== selectionId)
-                    }), false, 'sportsbook/removeBet'),
+                    set(
+                        (state) => ({
+                            bets: state.bets.filter((bet) => bet.selectionId !== selectionId),
+                        }),
+                        false,
+                        'sportsbook/removeBet',
+                    ),
                 removeBetsByEventId: (eventId) =>
-                    set(state => ({
-                        bets: state.bets.filter(bet => bet.eventId !== eventId)
-                    }), false, 'sportsbook/removeBetsByEventId'),
+                    set(
+                        (state) => ({
+                            bets: state.bets.filter((bet) => bet.eventId !== eventId),
+                        }),
+                        false,
+                        'sportsbook/removeBetsByEventId',
+                    ),
                 updateStake: (selectionId, stake) =>
-                    set(state => ({
-                        bets: state.bets.map(bet =>
-                            bet.selectionId === selectionId ? { ...bet, stake } : bet
-                        )
-                    }), false, 'sportsbook/updateStake'),
+                    set(
+                        (state) => ({
+                            bets: state.bets.map((bet) => (bet.selectionId === selectionId ? { ...bet, stake } : bet)),
+                        }),
+                        false,
+                        'sportsbook/updateStake',
+                    ),
                 clearBetslip: () => set({ bets: [] }, false, 'sportsbook/clear'),
 
                 handlePriceChange: (eventId, payload) => {
                     const { marketId, selectionId, price } = payload;
-                    const event = get().events.find(e => e.id === eventId);
+                    const event = get().events.find((e) => e.id === eventId);
                     const currentPrice = event?.markets
-                        .find(m => m.id === marketId)
-                        ?.selections
-                        .find(s => s.id === selectionId)
-                        ?.price;
+                        .find((m) => m.id === marketId)
+                        ?.selections.find((s) => s.id === selectionId)?.price;
 
                     if (currentPrice !== undefined && price !== currentPrice) {
                         const direction = price > currentPrice ? 'up' : 'down';
                         get().setPriceChange(selectionId.toString(), direction);
 
-                        set(state => ({
-                            events: state.events.map(event =>
-                                event.id === eventId
-                                    ? {
-                                        ...event,
-                                        markets: event.markets.map(market =>
-                                            market.id === marketId
-                                                ? {
-                                                    ...market,
-                                                    selections: market.selections.map(selection =>
-                                                        selection.id === selectionId
-                                                            ? { ...selection, price }
-                                                            : selection
-                                                    )
-                                                }
-                                                : market
-                                        )
-                                    }
-                                    : event
-                            )
-                        }), false, 'sportsbook/handlePriceChange');
+                        set(
+                            (state) => ({
+                                events: state.events.map((event) =>
+                                    event.id === eventId
+                                        ? {
+                                              ...event,
+                                              markets: event.markets.map((market) =>
+                                                  market.id === marketId
+                                                      ? {
+                                                            ...market,
+                                                            selections: market.selections.map((selection) =>
+                                                                selection.id === selectionId
+                                                                    ? { ...selection, price }
+                                                                    : selection,
+                                                            ),
+                                                        }
+                                                      : market,
+                                              ),
+                                          }
+                                        : event,
+                                ),
+                            }),
+                            false,
+                            'sportsbook/handlePriceChange',
+                        );
 
                         setTimeout(() => {
                             get().clearPriceChange(selectionId.toString());
@@ -112,24 +136,26 @@ export const useSportsBookStore = create<SportsBookState>()(
 
                 handleEventUpdate: (payload) => {
                     const { id, suspended } = payload;
-                    set(state => ({
-                        events: state.events.map(event =>
-                            event.id === id ? { ...event, suspended } : event
-                        )
-                    }), false, 'sportsbook/handleEventUpdate');
-                }
+                    set(
+                        (state) => ({
+                            events: state.events.map((event) => (event.id === id ? { ...event, suspended } : event)),
+                        }),
+                        false,
+                        'sportsbook/handleEventUpdate',
+                    );
+                },
             }),
             {
                 name: 'sportsbook-storage',
                 partialize: (state) => ({
                     bets: state.bets,
-                    activeTab: state.activeTab
-                })
-            }
+                    activeTab: state.activeTab,
+                }),
+            },
         ),
         {
             name: 'Sportsbook Store',
-            enabled: true
-        }
-    )
+            enabled: true,
+        },
+    ),
 );

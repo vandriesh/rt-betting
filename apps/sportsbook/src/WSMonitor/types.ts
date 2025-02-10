@@ -1,4 +1,4 @@
-import type { SubscriptionSource } from '../../types';
+import type { SubscriptionSource } from '@my-org/common';
 
 export interface Channel {
   channel: string;

@@ -1,6 +1,6 @@
 import React from 'react';
 import { useEvents } from './useEvents';
-import { useSportsBookStore } from './useEventsStore';
+import { useSportsBookStore } from '@my-org/common';
 import { EventItem } from './EventItem';
 import { Clock, Calendar } from 'lucide-react';
 
@@ -28,7 +28,7 @@ export const EventList = () => {
   }
 
   return (
-    <div className="bg-white rounded-lg shadow-lg overflow-hidden">
+    <div className="bg-white rounded-lg shadow-lg overflow-hidden" data-testid="event-list">
       {/* Tabs */}
       <div className="flex border-b">
         <button

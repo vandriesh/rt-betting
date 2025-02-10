@@ -16,7 +16,8 @@ export const useSportsbookConnection = () => {
       setIsConnected(true);
       setLastPing(Date.now());
       // Re-setup subscriptions on reconnect
-      setupSocketSubscriptions();
+      // FIX SC-15052
+      // setupSocketSubscriptions();
     };
 
     const onDisconnect = (reason: string) => {

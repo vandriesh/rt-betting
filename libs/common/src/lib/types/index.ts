@@ -45,6 +45,7 @@ export enum WsMessageType {
 export interface SelectionPriceChangePayload {
   marketId: number;
   selectionId: number;
+  eventId: number;
   price: number;
 }
 

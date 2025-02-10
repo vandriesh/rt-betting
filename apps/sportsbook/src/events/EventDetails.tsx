@@ -1,7 +1,7 @@
 import React from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { ArrowUpCircle, ArrowDownCircle, ArrowLeft, Lock, Clock } from 'lucide-react';
-import { useSportsBookStore } from './useEventsStore';
+import { useSportsBookStore } from '@my-org/common';
 import { useSubscriptionStore } from '@my-org/common';
 
 export const EventDetails = () => {

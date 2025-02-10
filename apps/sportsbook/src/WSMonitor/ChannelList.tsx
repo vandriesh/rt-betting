@@ -1,5 +1,5 @@
 import React from 'react';
-import type { ChannelListProps } from '../types';
+import type { ChannelListProps } from './types';
 
 const SourceBadge = ({ source }: { source: string }) => {
   const colors = {

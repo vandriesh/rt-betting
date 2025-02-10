@@ -1,5 +1,5 @@
 import { useMemo } from 'react';
-import type { Event, Selection } from '../../types';
+import type { Event, Selection } from '@my-org/common';
 
 interface BetslipBet {
   eventId: number;

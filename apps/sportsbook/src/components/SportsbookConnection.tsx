@@ -2,7 +2,7 @@ import { ConnectionStatus } from '@my-org/feature-ws-logger';
 
 import { WSMonitor } from '../WSMonitor';
 import { useSportsbookConnection } from '../hooks/useSportsbookConnection';
-import { useSportsBookStore } from '../events/useEventsStore';
+import { useSportsBookStore } from '@my-org/common';
 
 export const SportsbookConnection = () => {
   const { isConnected, lastPing, reconnectAttempts, subscriptions, toggleConnection } = useSportsbookConnection();

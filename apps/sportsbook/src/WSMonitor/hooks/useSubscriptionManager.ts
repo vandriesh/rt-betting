@@ -2,7 +2,7 @@ import { useCallback } from 'react';
 import type { SubscriptionSource } from '@my-org/common';
 import { enhancedSocket, useSubscriptionStore } from '@my-org/common';
 
-import { useSportsBookStore } from '../../events/useEventsStore';
+import { useSportsBookStore } from '@my-org/common';
 
 // Track active socket subscriptions
 const activeSocketSubscriptions = new Set<string>();

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Trash2 } from 'lucide-react';
-import { useSportsBookStore } from '../events/useEventsStore';
+import { useSportsBookStore } from '@my-org/common';
 import { useBetslipCalculations } from './useBetslipCalculations';
 import { BetslipItem } from './BetslipItem';
 
@@ -12,11 +12,11 @@ export const Betslip = React.memo(() => {
 
   const { betsWithData, totalStake, potentialWinnings, hasActiveBets } = useBetslipCalculations(bets, events);
 
-  const handleRemoveBet = React.useCallback((selectionId: string) => {
+  const handleRemoveBet = React.useCallback((selectionId: number) => {
     removeBet(selectionId);
   }, [removeBet]);
 
-  const handleUpdateStake = React.useCallback((selectionId: string, value: number) => {
+  const handleUpdateStake = React.useCallback((selectionId: number, value: number) => {
     updateStake(selectionId, value);
   }, [updateStake]);
 
@@ -65,7 +65,12 @@ export const Betslip = React.memo(() => {
         </div>
         <div className="flex justify-between text-sm">
           <span>Potential Winnings:</span>
-          <span className="font-semibold text-green-600">${potentialWinnings.toFixed(2)}</span>
+          <span
+            className="font-semibold text-green-600"
+            data-testid="potential-winnings"
+          >
+            ${potentialWinnings.toFixed(2)}
+          </span>
         </div>
         <button
           disabled={!hasActiveBets}

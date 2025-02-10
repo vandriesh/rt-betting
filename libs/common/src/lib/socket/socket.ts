@@ -64,6 +64,7 @@ export const enhancedSocket = {
     socket.emit('subscribe', { channel, lastRevision });
     
     const handler = (data: any) => {
+      console.log('DEBUG', data);
       try {
         if (!isValidMessage(data)) {
           console.warn(`Invalid message format received on channel ${channel}:`, data);

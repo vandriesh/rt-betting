@@ -54,16 +54,13 @@ export const useSubscriptionStore = create<SubscriptionState>()((set, get) => ({
           const marketId = parseInt(channel.split(':')[2], 10);
           const cleanup = enhancedSocket.subscribeToMarket(marketId, (message: WebSocketMessage<SelectionPriceChangePayload>) => {
             if (message.type === WsMessageType.SelectionPriceChange) {
-              const event = store.events.find(e => 
-                e.markets.some(m => m.id === message.payload.marketId)
-              );
-              if (event) {
-                store.handlePriceChange(event.id, message.payload);
-              }
+              store.handlePriceChange(message.payload.eventId, message.payload);
             }
           });
           newActiveSubscriptions.set(channel, cleanup);
         }
+      } else {
+        console.log(`📡 WebSocket subscription for ${channel} already exists, adding source ${source}`);
       }
 
       return { 
