@@ -12,7 +12,7 @@
     ],
     "sharedGlobals": ["{workspaceRoot}/.github/workflows/ci.yml"]
   },
-  "nxCloudId": "67a483ac24ad2c66d68befdc",
+  "nxCloudId": "67aaf4c9cb8ec6910f3596df",
   "plugins": [
     {
       "plugin": "@nx/js/typescript",
@@ -85,5 +85,9 @@
         "unitTestRunner": "vitest"
       }
     }
-  }
+  },
+  "affected": {
+    "exclude": [ "rt-betting" ]
+  },
+  "defaultProject": "origin/main"
 }
