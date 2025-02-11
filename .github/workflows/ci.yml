@@ -4,7 +4,7 @@ on:
   push:
     branches:
       - main
-  pull_request: {}
+#  pull_request: {}
 
 env:
   CI: true
@@ -30,7 +30,7 @@ jobs:
       - name: ⎔ Setup node
         uses: actions/setup-node@v4
         with:
-          node-version: 22
+          node-version: latest
 
       - name: 📥 Download deps
         uses: bahmutov/npm-install@v1
@@ -38,11 +38,11 @@ jobs:
       - name: NX set target SHAs
         uses: nrwl/nx-set-shas@v4
         with:
-          main-branch-name: ${{ github.event.pull_request.target.branch }}
+          main-branch-name: ${{ github.event.pull_request.base.sha }}
           fallback-sha: ${{ github.event.pull_request.head.sha }}
 
       - run: |
-          echo "TARGET: ${{ github.event.pull_request.base.ref }}"
+          echo "TARGET: ${{ github.event.pull_request.base.sha }}"
           echo "fallback-sha: ${{ github.event.pull_request.head.sha }}"
           echo "BASE: ${{ env.NX_BASE }}"
           echo "HEAD: ${{ env.NX_HEAD }}"          
@@ -51,7 +51,7 @@ jobs:
         run: echo '${{ toJson(github.event) }}'
 
       - name: 🔬 Lint
-        run: npx nx affected --target=lint --base=${{env.NX_BASE}} --head=${{ github.event.pull_request.head.sha }}
+        run: npx nx affected --target=lint --base=${{ github.event.pull_request.base.sha }} --head=${{ github.event.pull_request.head.sha }}
 
   typecheck:
     name: ʦ TypeScript
@@ -72,6 +72,9 @@ jobs:
 
       - name: NX set target SHAs
         uses: nrwl/nx-set-shas@v4
+        with:
+          main-branch-name: ${{ github.event.pull_request.base.sha }}
+          fallback-sha: ${{ github.event.pull_request.head.sha }}
 
       - name: 🔎 Type check
         run: npx nx affected --target=typecheck
