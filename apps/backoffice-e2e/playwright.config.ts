@@ -15,23 +15,23 @@ export default defineConfig({
   webServer: [
     {
       command: 'npx nx serve server',
-      url: 'http://localhost:3001/api/events',
+      url: 'http://localhost:3001/api/health',
       reuseExistingServer: !process.env.CI,
-      timeout: 5000,
+      timeout: 60_000,
       cwd: workspaceRoot,
     },
     {
       command: 'npx nx dev sportsbook',
       url: 'http://localhost:4200',
       reuseExistingServer: !process.env.CI,
-      timeout: 5000,
+      timeout: 60_000,
       cwd: workspaceRoot,
     },
     {
       command: 'npx nx dev backoffice',
       url: 'http://localhost:4201',
       reuseExistingServer: !process.env.CI,
-      timeout: 5000,
+      timeout: 60_000,
       cwd: workspaceRoot,
     },
   ],
