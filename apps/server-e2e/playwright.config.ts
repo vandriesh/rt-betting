@@ -6,15 +6,6 @@ import { workspaceRoot } from '@nx/devkit';
 const port = 3002;
 const baseURL = process.env['BASE_URL'] || `http://localhost:${port}`;
 
-/**
- * Read environment variables from file.
- * https://github.com/motdotla/dotenv
- */
-// require('dotenv').config();
-
-/**
- * See https://playwright.dev/docs/test-configuration.
- */
 export default defineConfig({
     ...nxE2EPreset(__filename, { testDir: './src' }),
     /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
@@ -25,11 +16,11 @@ export default defineConfig({
     },
     /* Run your local dev server before starting the tests */
     webServer: {
-        command: `echo "PORT=${port}" ;PORT=${port}  npx nx serve server`,
-        url: `http://localhost:${port}`,
+        command: `PORT=${port}  npx nx serve server`,
         reuseExistingServer: !process.env.CI,
+        url: `${baseURL}/api/health`,
         cwd: workspaceRoot,
-        timeout: 15000,
+        timeout: 60_000,
     },
     projects: [
         {
