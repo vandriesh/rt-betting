@@ -86,8 +86,5 @@
       }
     }
   },
-  "affected": {
-    "exclude": [ "rt-betting" ]
-  },
   "defaultProject": "origin/main"
 }
