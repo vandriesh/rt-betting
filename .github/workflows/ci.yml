@@ -39,6 +39,7 @@ jobs:
         uses: nrwl/nx-set-shas@v4
         with:
           main-branch-name: main
+          fallback-sha: 'HEAD'
 
       - name: 🔬 Lint
         run: npx nx affected --target=lint
