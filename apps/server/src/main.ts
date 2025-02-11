@@ -57,6 +57,9 @@ const resetWebSocketState = () => {
     io.emit('reset'); // Notify all clients
 };
 
+app.get('/api/health', (req, res) => {
+    res.status(200).send('OK');
+});
 app.get('/api/events', getEvents);
 // Modify the reset endpoint to reset both events and WebSocket state
 app.post('/api/reset', (req, res) => {
