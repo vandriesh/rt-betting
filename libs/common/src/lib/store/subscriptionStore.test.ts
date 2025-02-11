@@ -1,6 +1,5 @@
 import { describe, test, expect, beforeEach } from 'vitest';
-import { useSubscriptionStore } from '../subscriptionStore';
-import type { SubscriptionSource } from '../../types';
+import { useSubscriptionStore } from './subscriptionStore';
 
 // Helper to format subscriptions as ASCII text
 const formatSubscriptions = (store: ReturnType<typeof useSubscriptionStore.getState>) => {
