@@ -177,7 +177,7 @@ httpServer.on('error', (error) => {
     console.error('Server error:', error);
 });
 
-const PORT = 3001;
+const PORT = process.env.PORT || 3001;
 
 // Start server with better error handling
 try {
