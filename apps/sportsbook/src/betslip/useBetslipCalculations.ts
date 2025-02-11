@@ -1,9 +1,10 @@
 import { useMemo } from 'react';
 import type { Event, Selection } from '@my-org/common';
 
+
 interface BetslipBet {
   eventId: number;
-  selectionId: string;
+  selectionId: number;
   stake?: number;
 }
 

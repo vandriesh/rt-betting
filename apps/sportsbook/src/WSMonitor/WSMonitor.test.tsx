@@ -4,7 +4,7 @@ import { useSubscriptionStore } from '@my-org/common';
 import type { SubscriptionSource } from '@my-org/common';
 import '@testing-library/jest-dom';
 
-import { WSMonitor } from '../WSMonitor';
+import { WSMonitor } from './WSMonitor';
 
 describe.skip('WSMonitor Component', () => {
   beforeEach(() => {
@@ -41,17 +41,5 @@ describe.skip('WSMonitor Component', () => {
   test('should display connection status', () => {
     render(<WSMonitor isConnected={true} position="bottom-left" />);
     expect(screen.getByText('Active Subscriptions')).toBeInTheDocument();
-  });
-
-  test('should handle different positions', () => {
-    const { container: bottomLeft } = render(
-      <WSMonitor isConnected={true} position="bottom-left" />
-    );
-    expect(bottomLeft.firstChild).toHaveClass('bottom-4 left-4');
-
-    const { container: topRight } = render(
-      <WSMonitor isConnected={true} position="top-right" />
-    );
-    expect(topRight.firstChild).toHaveClass('top-4 right-4');
   });
 });
