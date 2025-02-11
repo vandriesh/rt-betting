@@ -3,7 +3,7 @@ import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import '@testing-library/jest-dom';
 import { EventItem } from './EventItem';
-import { type Event, useSportsBookStore } from '@my-org/common'; // Adjust the import based on your actual setup
+import { type Event } from '@my-org/common'; // Adjust the import based on your actual setup
 
 // Mock event data (copy from your server mock setup)
 const mockEvent: Event = {
