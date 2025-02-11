@@ -2,7 +2,9 @@
   "name": "@my-org/source",
   "version": "0.0.0",
   "license": "MIT",
-  "scripts": {},
+  "scripts": {
+    "test:e2e:install": "npx playwright install --with-deps chromium"
+  },
   "private": true,
   "devDependencies": {
     "@babel/core": "^7.14.5",
