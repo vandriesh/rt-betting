@@ -38,12 +38,16 @@ jobs:
         with:
           node-version: 20
 
-#      - name: 📥 Download deps
-#        uses: bahmutov/npm-install@v1.10.5
+      - name: 📥 Download deps
+        uses: bahmutov/npm-install@v1.10.5
 
 #      - uses: nrwl/nx-set-shas@v4
 
 #      - run: npx nx-cloud record -- nx format:check
 #      - run: npx nx affected -t lint test build e2e
-      - run: npm i --force
-      - run: npx nx affected --target=lint --base=${{ github.event.pull_request.base.sha }} --head=${{ github.event.pull_request.head.sha }} --verbose
+#      - run: npm i --force
+      - run: npx nx affected --target=lint,test,build --base=${{ github.event.pull_request.base.sha }} --head=${{ github.event.pull_request.head.sha }}
+
+      - name: 🎭 Playwright
+        if: ${{ github.event_name == 'pull_request' }}
+        run: npx nx affected --target=e2e --base=${{ github.event.pull_request.base.sha }} --head=${{ github.event.pull_request.head.sha }}
