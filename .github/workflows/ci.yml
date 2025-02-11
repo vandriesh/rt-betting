@@ -38,15 +38,17 @@ jobs:
       - name: NX set target SHAs
         uses: nrwl/nx-set-shas@v4
         with:
-          main-branch-name: main
+          main-branch-name: ${{ github.event.pull_request.target.branch }}
           fallback-sha: ${{ github.event.pull_request.head.sha }}
 
       - run: |
+          echo "TARGET: ${{ github.event.pull_request.target.branch }}"
+          echo "fallback-sha: ${{ github.event.pull_request.head.sha }}"
           echo "BASE: ${{ env.NX_BASE }}"
           echo "HEAD: ${{ env.NX_HEAD }}"          
 
       - name: 🔬 Lint
-        run: npx nx affected --target=lint --head=${{ github.event.pull_request.head.sha }}
+        run: npx nx affected --target=lint --base=${{env.NX_BASE}}--head=${{ github.event.pull_request.head.sha }}
 
   typecheck:
     name: ʦ TypeScript
