@@ -42,13 +42,16 @@ jobs:
           fallback-sha: ${{ github.event.pull_request.head.sha }}
 
       - run: |
-          echo "TARGET: ${{ github.event.pull_request.target.branch }}"
+          echo "TARGET: ${{ github.event.pull_request.base.ref }}"
           echo "fallback-sha: ${{ github.event.pull_request.head.sha }}"
           echo "BASE: ${{ env.NX_BASE }}"
           echo "HEAD: ${{ env.NX_HEAD }}"          
 
+      - name: Debug GitHub Context
+        run: echo '${{ toJson(github.event) }}'
+
       - name: 🔬 Lint
-        run: npx nx affected --target=lint --base=${{env.NX_BASE}}--head=${{ github.event.pull_request.head.sha }}
+        run: npx nx affected --target=lint --base=${{env.NX_BASE}} --head=${{ github.event.pull_request.head.sha }}
 
   typecheck:
     name: ʦ TypeScript
@@ -69,8 +72,6 @@ jobs:
 
       - name: NX set target SHAs
         uses: nrwl/nx-set-shas@v4
-        with:
-          main-branch-name: main
 
       - name: 🔎 Type check
         run: npx nx affected --target=typecheck
@@ -127,7 +128,7 @@ jobs:
         run: npm run test:e2e:install
 
       - name: 🎭 Playwright tests
-        run: npx nx affected --target=e2e
+        run: npx nx affected --target=e2e-ci
 
       - name: 📊 Upload report
         uses: actions/upload-artifact@v4
