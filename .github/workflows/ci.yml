@@ -39,10 +39,14 @@ jobs:
         uses: nrwl/nx-set-shas@v4
         with:
           main-branch-name: main
-          fallback-sha: HEAD
+          fallback-sha: ${{ github.event.pull_request.head.sha }}
+
+      - run: |
+          echo "BASE: ${{ env.NX_BASE }}"
+          echo "HEAD: ${{ env.NX_HEAD }}"          
 
       - name: 🔬 Lint
-        run: npx nx affected --target=lint
+        run: npx nx affected --target=lint --head=${{ github.event.pull_request.head.sha }}
 
   typecheck:
     name: ʦ TypeScript
