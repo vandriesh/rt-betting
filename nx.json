@@ -99,5 +99,6 @@
         "unitTestRunner": "vitest"
       }
     }
-  }
+  },
+  "defaultProject": "origin/main"
 }

@@ -32,6 +32,10 @@ jobs:
       - name: 📥 Download deps
         uses: bahmutov/npm-install@v1
 
+      - name: NX set target SHAs
+        uses: nrwl/nx-set-shas@v4
+        with:
+          main-branch-name: main
 
       - name: 🔬 Lint
         run: npx nx affected --target=lint
@@ -53,6 +57,11 @@ jobs:
       - name: 📥 Download deps
         uses: bahmutov/npm-install@v1
 
+      - name: NX set target SHAs
+        uses: nrwl/nx-set-shas@v4
+        with:
+          main-branch-name: main
+
       - name: 🔎 Type check
         run: npx nx affected --target=typecheck
 
@@ -73,10 +82,12 @@ jobs:
       - name: 📥 Download deps
         uses: bahmutov/npm-install@v1
 
-      - name: 🏄 Copy test env vars
-        run: cp .env.example .env
+      - name: NX set target SHAs
+        uses: nrwl/nx-set-shas@v4
+        with:
+          main-branch-name: main
 
-      - name: ⚡ Run vitest
+      - name: ⚡ Run tests
         run: npx nx affected --target=test -- --coverage
 
   playwright:
@@ -96,6 +107,11 @@ jobs:
 
       - name: 📥 Download deps
         uses: bahmutov/npm-install@v1
+
+      - name: NX set target SHAs
+        uses: nrwl/nx-set-shas@v4
+        with:
+          main-branch-name: main
 
       - name: 📥 Install Playwright Browsers
         run: npm run test:e2e:install
@@ -118,10 +134,5 @@ jobs:
     # only build/deploy branches on pushes
     if: ${{ github.event_name == 'push' }}
     steps:
-      - name: ⬇️ Checkout repo
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-
       - name: Echo done
         run: echo "done!"
