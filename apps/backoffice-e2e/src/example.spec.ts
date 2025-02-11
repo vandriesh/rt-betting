@@ -38,12 +38,12 @@ test.describe('Real-time synchronization between Back Office and Sportsbook', ()
         const sbEvent = sbPage.getByTestId('event-item').first();
 
         // Get initial price from both sides
-        const boInitialPrice = await boEvent.getByTestId('selection-price').first().textContent();
-        const sbInitialPrice = await sbEvent.getByTestId('selection-price').first().textContent();
+        const boInitialPrice = boEvent.getByTestId('selection-price').first();
+        const sbInitialPrice = sbEvent.getByTestId('selection-price').first();
 
         // Verify initial prices match
-        expect(boInitialPrice).toBe(sbInitialPrice);
-        expect(sbInitialPrice).toBe('2.50');
+        await expect(boInitialPrice).toHaveText('2.50');
+        await expect(sbInitialPrice).toHaveText('2.50');
 
         // Update price in Back Office
         await boEvent.getByTestId('price-increase').first().click();
@@ -57,13 +57,12 @@ test.describe('Real-time synchronization between Back Office and Sportsbook', ()
             .waitFor();
 
         // Get updated prices
-        const boUpdatedPrice = await boEvent.getByTestId('selection-price').first().textContent();
-        const sbUpdatedPrice = await sbEvent.getByTestId('selection-price').first().textContent();
+        const boUpdatedPrice = boEvent.getByTestId('selection-price').first();
+        const sbUpdatedPrice = sbEvent.getByTestId('selection-price').first();
 
         // Verify prices are synced
-        expect(boUpdatedPrice).toBe(sbUpdatedPrice);
-        expect(parseFloat(boUpdatedPrice!)).toBeGreaterThan(parseFloat(boInitialPrice!));
-        expect(boUpdatedPrice).toBe('2.60');
+        await expect(boUpdatedPrice).toHaveText('2.60');
+        await expect(sbUpdatedPrice).toHaveText('2.60');
     });
 
     test('should sync suspension state from Back Office to Sportsbook', async () => {
@@ -107,12 +106,11 @@ test.describe('Real-time synchronization between Back Office and Sportsbook', ()
         const price = parseFloat((await betslipItem.getByTestId('selection-price').textContent()) || '0');
         const expectedWinnings = stake * price;
 
-        let actualWinningsTextContent = await sbPage.getByTestId('potential-winnings').textContent();
-        const actualWinnings = parseFloat(actualWinningsTextContent?.replace('$', '') || '0');
+        const actualWinnings = sbPage.getByTestId('potential-winnings');
+        const actualWinningsValue = parseFloat((await actualWinnings?.textContent())?.replace('$', '') || '0');
 
-        expect(actualWinningsTextContent).toBe(`$25.00`);
-        expect(actualWinningsTextContent).toBe(`$${expectedWinnings}.00`);
-        expect(actualWinnings).toBeCloseTo(expectedWinnings);
+        await expect(actualWinnings).toHaveText(`$25.00`);
+        expect(actualWinningsValue).toBeCloseTo(expectedWinnings);
     });
 
     test('should sync price changes while bet is in betslip', async () => {
@@ -145,12 +143,12 @@ test.describe('Real-time synchronization between Back Office and Sportsbook', ()
         // Verify potential winnings were recalculated
         const stake = 10;
         const expectedWinnings = stake * parseFloat(updatedPrice!);
-        let actualWinningsTextContent = await sbPage.getByTestId('potential-winnings').textContent();
-        const actualWinnings = parseFloat(actualWinningsTextContent?.replace('$', '') || '0');
-        expect(actualWinnings).toBeCloseTo(expectedWinnings, 2);
+        const actualWinnings = sbPage.getByTestId('potential-winnings');
 
-        expect(actualWinningsTextContent).toBe(`$26.00`);
-        expect(actualWinningsTextContent).toBe(`$${expectedWinnings}.00`);
-        expect(actualWinnings).toBeCloseTo(expectedWinnings);
+        const actualWinningsValue = parseFloat((await actualWinnings?.textContent())?.replace('$', '') || '0');
+        expect(actualWinningsValue).toBeCloseTo(expectedWinnings, 2);
+
+        await expect(actualWinnings).toHaveText(`$26.00`);
+        expect(actualWinningsValue).toBeCloseTo(expectedWinnings);
     });
 });
