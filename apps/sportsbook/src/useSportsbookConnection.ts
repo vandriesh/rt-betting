@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 
 import { socket, enhancedSocket } from '@my-org/common';
 
-import { setupSocketSubscriptions, cleanupSocketListeners } from '../events/useEventsSocket';
+import { setupSocketSubscriptions, cleanupSocketListeners } from './useEventsSocket';
 
 export const useSportsbookConnection = () => {
     const [isConnected, setIsConnected] = useState(socket.connected);

@@ -76,6 +76,6 @@ export const useBackOfficeConnection = () => {
     lastPing,
     reconnectAttempts,
     subscriptions,
-    toggleConnection
+    toggleConnection,
   };
 };
