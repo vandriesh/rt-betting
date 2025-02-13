@@ -1,11 +1,16 @@
 import React from 'react';
 import { AlertCircle } from 'lucide-react';
-import { useWSMonitor } from './hooks/useWSMonitor';
+import { useWSMonitor } from './useWSMonitor';
 import { ChannelList } from './ChannelList';
 import { MonitorHeader } from './MonitorHeader';
-import type { WSMonitorProps } from './types';
 
-export const WSMonitor: React.FC<WSMonitorProps> = ({ isConnected, activeTab, position = 'bottom-left' }) => {
+
+interface WSMonitorProps {
+    isConnected: boolean;
+    position?: 'bottom-left' | 'bottom-right' | 'top-left' | 'top-right';
+}
+
+export const WSMonitor = ({ isConnected, position = 'bottom-left' }: WSMonitorProps) => {
     const [isExpanded, setIsExpanded] = React.useState(true);
     const { summary } = useWSMonitor();
 
@@ -22,7 +27,6 @@ export const WSMonitor: React.FC<WSMonitorProps> = ({ isConnected, activeTab, po
                 isExpanded={isExpanded}
                 setIsExpanded={setIsExpanded}
                 isConnected={isConnected}
-                activeTab={activeTab}
                 totalChannels={summary.events.length + summary.markets.length}
             />
             {isExpanded && (

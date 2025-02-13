@@ -1,7 +1,8 @@
 import React from 'react';
-import { useEventsStore } from './useEventsStore';
 import { enhancedSocket } from '@my-org/common';
 import { WsMessageType, type SelectionPriceChangePayload } from '@my-org/common';
+
+import { useEventsStore } from './useEventsStore';
 
 export const usePriceUpdate = (eventId: number) => {
     const { updateSelectionPrice } = useEventsStore();

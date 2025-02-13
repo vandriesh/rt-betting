@@ -33,10 +33,7 @@ export const EventList = () => {
   }
 
   return (
-    <div className="max-w-5xl mx-auto">
-      <h1 className="text-3xl font-bold mb-8">Back Office - Odds Management</h1>
-      
-      <div className="space-y-8">
+    <>
         {/* Live Events Section */}
         <div className="bg-white rounded-lg shadow-lg overflow-hidden">
           <div className="bg-red-50 p-4 border-b">
@@ -82,7 +79,6 @@ export const EventList = () => {
             ))}
           </div>
         </div>
-      </div>
-    </div>
+    </>
   );
 };
