@@ -32,6 +32,12 @@
   "include": ["src/**/*.js", "src/**/*.jsx", "src/**/*.ts", "src/**/*.tsx"],
   "references": [
     {
+      "path": "../../libs/ui-kit/tsconfig.lib.json"
+    },
+    {
+      "path": "../../libs/ui-domain-kit/tsconfig.lib.json"
+    },
+    {
       "path": "../../libs/common/tsconfig.lib.json"
     },
     {

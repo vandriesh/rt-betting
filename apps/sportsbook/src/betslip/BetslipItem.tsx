@@ -1,7 +1,8 @@
 import React from 'react';
-import { X, ArrowUpCircle, ArrowDownCircle, Lock, Clock } from 'lucide-react';
+import { X, ArrowUpCircle, ArrowDownCircle, Lock } from 'lucide-react';
 import type { Event, Selection } from '@my-org/common';
 import { useSubscriptionStore } from '@my-org/common';
+import { LiveScore } from '@my-org/ui-domain-kit';
 
 interface BetslipItemProps {
     event: Event;
@@ -68,15 +69,7 @@ export const BetslipItem = React.memo(
                         </div>
                         <div className="flex items-center gap-2 mt-1">
                             {event.status === 'live' ? (
-                                <>
-                                    <span className="inline-flex items-center text-red-500 text-sm">
-                                        <Clock className="w-3 h-3 mr-1" />
-                                        {event.timeElapsed}'
-                                    </span>
-                                    <span className="text-sm font-semibold">
-                                        {event.score?.home} - {event.score?.away}
-                                    </span>
-                                </>
+                                <LiveScore event={event} />
                             ) : (
                                 <span className="text-sm text-gray-500">{formatTime(event.startTime)}</span>
                             )}
