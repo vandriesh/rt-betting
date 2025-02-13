@@ -3,10 +3,14 @@ import { Clock } from 'lucide-react';
 import { type Event } from '@my-org/common';
 import { S_h5 } from '@my-org/ui-kit';
 
+// eslint-disable-next-line
 interface OwnProps {
-    event: Event;
+    //event: Event;
 }
-function LiveScore({ event }: OwnProps) {
+
+type Props = OwnProps & { event: Pick<Event, 'score' | 'timeElapsed'> };
+
+function LiveScore({ event }: Props) {
     return (
         <>
             <span className="inline-flex items-center text-red-500 text-sm">
