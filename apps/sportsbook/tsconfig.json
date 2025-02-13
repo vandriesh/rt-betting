@@ -3,6 +3,12 @@
   "include": [],
   "references": [
     {
+      "path": "../../libs/ui-kit"
+    },
+    {
+      "path": "../../libs/ui-domain-kit"
+    },
+    {
       "path": "../../libs/common"
     },
     {

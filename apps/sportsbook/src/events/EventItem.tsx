@@ -1,9 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowDownCircle, ArrowUpCircle, Clock, Lock } from 'lucide-react';
+import { ArrowDownCircle, ArrowUpCircle, Lock } from 'lucide-react';
 
 import type { Selection } from '@my-org/common';
 import { useSubscriptionStore } from '@my-org/common';
+import { LiveScore } from '@my-org/ui-domain-kit';
 
 import { useSportsBookStore } from '@my-org/common';
 
@@ -76,15 +77,7 @@ export const EventItem = React.memo(({ id, source }: EventItemProps) => {
 
                 <div className="flex items-center gap-2 mt-1">
                     {event.status === 'live' ? (
-                        <>
-                            <span className="inline-flex items-center text-red-500 text-sm">
-                                <Clock className="w-3 h-3 mr-1" />
-                                {event.timeElapsed}'
-                            </span>
-                            <span className="text-sm font-semibold">
-                                {event.score?.home} - {event.score?.away}
-                            </span>
-                        </>
+                        <LiveScore event={event} />
                     ) : (
                         <span className="text-sm text-gray-500">{formatTime(event.startTime)}</span>
                     )}
