@@ -3,6 +3,15 @@
   "include": [],
   "references": [
     {
+      "path": "../../libs/feature-event-list"
+    },
+    {
+      "path": "../../libs/feature-ws-monitor"
+    },
+    {
+      "path": "../../libs/feature-ws-logger"
+    },
+    {
       "path": "./tsconfig.app.json"
     },
     {
