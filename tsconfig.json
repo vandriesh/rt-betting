@@ -41,6 +41,9 @@
     },
     {
       "path": "./libs/feature-ws-monitor"
+    },
+    {
+      "path": "./libs/feature-event-list"
     }
   ]
 }
