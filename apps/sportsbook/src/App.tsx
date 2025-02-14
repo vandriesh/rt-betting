@@ -6,6 +6,7 @@ import { WSMonitor, useSportsbookConnection } from '@my-org/feature-ws-monitor';
 import { EventList } from '@my-org/feature-event-list';
 import { Betslip } from '@my-org/feature-betlsip';
 
+import { SportsList } from './left-hand-nav/SportsList';
 import { EventDetails } from './events/EventDetails';
 import './index.css';
 
@@ -35,6 +36,9 @@ function App() {
                     </nav>
 
                     <div className="max-w-7xl mx-auto px-4 flex gap-8">
+                        <div className="w-64 bg-white rounded-lg shadow-lg p-4">
+                            <SportsList />
+                        </div>
                         <div className="flex-1">
                             <Routes>
                                 <Route path="/" element={<EventList />} />
