@@ -2,13 +2,12 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
 import { ConnectionStatus, WSLogger } from '@my-org/feature-ws-logger';
+import { WSMonitor, useSportsbookConnection } from '@my-org/feature-ws-monitor';
+import { EventList } from '@my-org/feature-event-list';
 
-import { EventList } from './events/EventList';
 import { EventDetails } from './events/EventDetails';
 import { Betslip } from './betslip/Betslip';
 import './index.css';
-import { WSMonitor } from './WSMonitor/WSMonitor';
-import { useSportsbookConnection } from './useSportsbookConnection';
 
 const queryClient = new QueryClient();
 

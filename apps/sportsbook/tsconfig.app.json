@@ -38,6 +38,9 @@
       "path": "../../libs/common/tsconfig.lib.json"
     },
     {
+      "path": "../../libs/feature-ws-monitor/tsconfig.lib.json"
+    },
+    {
       "path": "../../libs/feature-ws-logger/tsconfig.lib.json"
     }
   ]
