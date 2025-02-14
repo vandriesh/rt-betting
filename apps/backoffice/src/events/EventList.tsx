@@ -35,7 +35,7 @@ export const EventList = () => {
   return (
     <>
         {/* Live Events Section */}
-        <div className="bg-white rounded-lg shadow-lg overflow-hidden">
+        <div className="bg-white rounded-lg shadow-lg overflow-hidden border-2 border-red-200">
           <div className="bg-red-50 p-4 border-b">
             <h2 className="text-lg font-semibold text-red-700">
               Live Events ({liveEvents.length})
@@ -58,7 +58,7 @@ export const EventList = () => {
         </div>
 
         {/* Upcoming Events Section */}
-        <div className="bg-white rounded-lg shadow-lg overflow-hidden">
+        <div className="bg-white rounded-lg shadow-lg overflow-hidden mt-4 border-2 border-gray-200">
           <div className="bg-blue-50 p-4 border-b">
             <h2 className="text-lg font-semibold text-blue-700">
               Upcoming Events ({upcomingEvents.length})
