@@ -87,4 +87,3 @@ export const Betslip = React.memo(() => {
   );
 });
 
-Betslip.displayName = 'Betslip';

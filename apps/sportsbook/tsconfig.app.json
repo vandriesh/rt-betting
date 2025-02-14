@@ -32,10 +32,13 @@
   "include": ["src/**/*.js", "src/**/*.jsx", "src/**/*.ts", "src/**/*.tsx"],
   "references": [
     {
-      "path": "../../libs/ui-domain-kit/tsconfig.lib.json"
+      "path": "../../libs/common/tsconfig.lib.json"
     },
     {
-      "path": "../../libs/common/tsconfig.lib.json"
+      "path": "../../libs/feature-event-betslip/tsconfig.lib.json"
+    },
+    {
+      "path": "../../libs/feature-event-list/tsconfig.lib.json"
     },
     {
       "path": "../../libs/feature-ws-monitor/tsconfig.lib.json"

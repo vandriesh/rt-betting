@@ -3,10 +3,13 @@
   "include": [],
   "references": [
     {
-      "path": "../../libs/ui-domain-kit"
+      "path": "../../libs/common"
     },
     {
-      "path": "../../libs/common"
+      "path": "../../libs/feature-event-betslip"
+    },
+    {
+      "path": "../../libs/feature-event-list"
     },
     {
       "path": "../../libs/feature-ws-monitor"

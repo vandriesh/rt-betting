@@ -32,6 +32,9 @@
   "include": ["src/**/*.js", "src/**/*.jsx", "src/**/*.ts", "src/**/*.tsx"],
   "references": [
     {
+      "path": "../../libs/feature-event-betslip/tsconfig.lib.json"
+    },
+    {
       "path": "../../libs/feature-event-list/tsconfig.lib.json"
     },
     {
