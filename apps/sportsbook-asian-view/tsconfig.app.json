@@ -4,7 +4,7 @@
     "outDir": "out-tsc/sportsbook-asian-view",
     "tsBuildInfoFile": "out-tsc/sportsbook-asian-view/tsconfig.app.tsbuildinfo",
     "jsx": "react-jsx",
-    "lib": ["dom"],
+    "lib": ["dom", "esnext"],
     "types": ["node", "@nx/react/typings/cssmodule.d.ts", "@nx/react/typings/image.d.ts", "vite/client"],
     "rootDir": "src",
     "module": "esnext",

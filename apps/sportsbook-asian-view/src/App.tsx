@@ -5,8 +5,8 @@ import { WSMonitor, useSportsbookConnection } from '@my-org/feature-ws-monitor';
 
 import { EventTable } from '@my-org/feature-event-list';
 import { Betslip } from '@my-org/feature-betlsip';
+
 import './index.css';
-// import { useSportsbookConnection } from './useSportsbookConnection';
 
 const queryClient = new QueryClient();
 
@@ -27,7 +27,7 @@ function App() {
                 <nav className="bg-white shadow-lg mb-8">
                     <div className="max-w-7xl mx-auto px-4">
                         <div className="flex h-16 items-center">
-                            <h1 className="text-xl font-bold">Sportsbook</h1>
+                            <h1 className="text-xl font-bold">Sportsbook Asia View</h1>
                         </div>
                     </div>
                 </nav>
