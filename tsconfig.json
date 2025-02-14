@@ -44,6 +44,9 @@
     },
     {
       "path": "./libs/feature-event-list"
+    },
+    {
+      "path": "./libs/feature-event-betslip"
     }
   ]
 }

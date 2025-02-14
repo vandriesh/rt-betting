@@ -4,9 +4,9 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ConnectionStatus, WSLogger } from '@my-org/feature-ws-logger';
 import { WSMonitor, useSportsbookConnection } from '@my-org/feature-ws-monitor';
 import { EventList } from '@my-org/feature-event-list';
+import { Betslip } from '@my-org/feature-betlsip';
 
 import { EventDetails } from './events/EventDetails';
-import { Betslip } from './betslip/Betslip';
 import './index.css';
 
 const queryClient = new QueryClient();

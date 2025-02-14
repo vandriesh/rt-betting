@@ -4,7 +4,7 @@ import { ConnectionStatus, WSLogger } from '@my-org/feature-ws-logger';
 import { WSMonitor, useSportsbookConnection } from '@my-org/feature-ws-monitor';
 
 import { EventTable } from '@my-org/feature-event-list';
-// import { Betslip } from './betslip/Betslip';
+import { Betslip } from '@my-org/feature-betlsip';
 import './index.css';
 // import { useSportsbookConnection } from './useSportsbookConnection';
 
@@ -34,7 +34,7 @@ function App() {
 
                 <div className="max-w-7xl mx-auto px-4 flex gap-8">
                     <div className="w-96 bg-white rounded-lg shadow-lg">
-                        Betslip
+                        <Betslip />
                     </div>
                     <div className="flex-1">
                         <EventTable />
