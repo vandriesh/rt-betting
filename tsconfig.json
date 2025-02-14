@@ -32,6 +32,12 @@
     },
     {
       "path": "./libs/ui-domain-kit"
+    },
+    {
+      "path": "./apps/sportsbook-asian-view-e2e"
+    },
+    {
+      "path": "./apps/sportsbook-asian-view"
     }
   ]
 }
