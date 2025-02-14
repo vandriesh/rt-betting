@@ -3,6 +3,12 @@
   "include": [],
   "references": [
     {
+      "path": "../ui-domain-kit"
+    },
+    {
+      "path": "../common"
+    },
+    {
       "path": "./tsconfig.lib.json"
     },
     {

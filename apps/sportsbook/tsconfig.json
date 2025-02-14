@@ -9,6 +9,9 @@
       "path": "../../libs/common"
     },
     {
+      "path": "../../libs/feature-ws-monitor"
+    },
+    {
       "path": "../../libs/feature-ws-logger"
     },
     {
