@@ -38,6 +38,9 @@
     },
     {
       "path": "./apps/sportsbook-asian-view"
+    },
+    {
+      "path": "./libs/feature-ws-monitor"
     }
   ]
 }
