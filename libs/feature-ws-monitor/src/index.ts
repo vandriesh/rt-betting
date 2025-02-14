@@ -1,1 +1,2 @@
-export * from './lib/feature-ws-monitor';
+export { WSMonitor } from './lib/WSMonitor/WSMonitor';
+export * from './lib/useSportsbookConnection';
