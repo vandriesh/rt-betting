@@ -11,7 +11,7 @@ interface WSMonitorProps {
 }
 
 export const WSMonitor = ({ isConnected, position = 'bottom-left' }: WSMonitorProps) => {
-    const [isExpanded, setIsExpanded] = React.useState(true);
+    const [isExpanded, setIsExpanded] = React.useState(false);
     const { summary } = useWSMonitor();
 
     const positionClasses = {
@@ -23,12 +23,6 @@ export const WSMonitor = ({ isConnected, position = 'bottom-left' }: WSMonitorPr
 
     return (
         <div className={`fixed ${positionClasses} z-50 w-80 bg-gray-50 rounded-lg shadow-lg overflow-hidden border`}>
-            <MonitorHeader
-                isExpanded={isExpanded}
-                setIsExpanded={setIsExpanded}
-                isConnected={isConnected}
-                totalChannels={summary.events.length + summary.markets.length}
-            />
             {isExpanded && (
                 <div className='p-2 space-y-4 max-h-[calc(100vh-200px)] overflow-y-auto'>
                     {summary.events.length === 0 && summary.markets.length === 0 ? (
@@ -41,6 +35,12 @@ export const WSMonitor = ({ isConnected, position = 'bottom-left' }: WSMonitorPr
                     )}
                 </div>
             )}
+            <MonitorHeader
+                isExpanded={isExpanded}
+                setIsExpanded={setIsExpanded}
+                isConnected={isConnected}
+                totalChannels={summary.events.length + summary.markets.length}
+            />
         </div>
     );
 };
