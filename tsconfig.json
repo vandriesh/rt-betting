@@ -46,7 +46,7 @@
       "path": "./libs/feature-event-list"
     },
     {
-      "path": "./libs/feature-event-betslip"
+      "path": "./libs/feature-betslip"
     }
   ]
 }
