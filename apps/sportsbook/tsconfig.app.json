@@ -35,7 +35,7 @@
       "path": "../../libs/common/tsconfig.lib.json"
     },
     {
-      "path": "../../libs/feature-event-betslip/tsconfig.lib.json"
+      "path": "../../libs/feature-betslip/tsconfig.lib.json"
     },
     {
       "path": "../../libs/feature-event-list/tsconfig.lib.json"

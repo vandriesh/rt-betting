@@ -3,7 +3,7 @@
   "include": [],
   "references": [
     {
-      "path": "../../libs/feature-event-betslip"
+      "path": "../../libs/feature-betslip"
     },
     {
       "path": "../../libs/feature-event-list"
